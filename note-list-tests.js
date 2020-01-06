@@ -1,8 +1,7 @@
 function testCreateNote(content) {
   var noteList = new NoteList();
   noteList.newNote(content);
-  actual = noteList.view()[0].read();
-  assert.toInclude(content, actual);
+  assert.toInclude(content, noteList.view()[0].read());
 }
 
 testCreateNote("Hello World!");
