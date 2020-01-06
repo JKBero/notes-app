@@ -1,6 +1,6 @@
 # Notes App
 
-This project is a notes app built as a frontend, single page web app, in Vanilla Javascript. It has been unit tested without the implementation of a testing library.
+This notes app is built as a frontend, single page web app, in Vanilla Javascript. It has been unit tested without the implementation of a testing library.
 
 ## User Stories
 
