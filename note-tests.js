@@ -4,3 +4,4 @@ function testReadNote(content) {
 }
 
 testReadNote("Hello World!");
+testReadNote("2nd test");
