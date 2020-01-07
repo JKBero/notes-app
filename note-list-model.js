@@ -1,6 +1,6 @@
 (function(exports) {
   function NoteList() {
-    this._list = []
+    this._list = [];
   }
 
   NoteList.prototype = {
@@ -10,7 +10,7 @@
     },
 
     view: function() {
-      return this._list
+      return this._list;
     }
   };
 
