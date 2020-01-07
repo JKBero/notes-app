@@ -9,7 +9,8 @@
       var result = "<ul>";
       for (var i = 0; i < list.length; i++) {
         var text = list[i].read().slice(0, 20);
-        result += `<li><div>${text}</div></li>`;
+        var id = list[i].id
+        result += `<li><a href='#notes/${id}' id='${id}'>${text}</a></li>`;
       }
       return result + "</ul>";
     }

@@ -2,6 +2,10 @@ function testCreateNote(content) {
   var noteList = new NoteList();
   noteList.newNote(content);
   assert.toInclude(content, noteList.view()[0].read());
+
+  var expected = (noteList.view().length - 1);
+  var actual = noteList.view()[0].id;
+  assert.eq(expected, actual);
 }
 
 testCreateNote("Hello World!");

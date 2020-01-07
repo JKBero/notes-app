@@ -11,7 +11,7 @@ function testOneNoteView() {
   noteList.newNote("Favourite food: pesto");
 
   var listView = new NoteListView(noteList);
-  expected = "<ul><li><div>Favourite food: pest</div></li></ul>"
+  expected = "<ul><li><a href='#notes/0' id='0'>Favourite food: pest</a></li></ul>"
   assert.eq(expected, listView.view());
 }
 
@@ -24,7 +24,7 @@ function testSeveralNotesView() {
   noteList.newNote("Favourite chocolate: maltesers");
 
   var listView = new NoteListView(noteList);
-  expected = "<ul><li><div>Favourite food: pest</div></li><li><div>Favourite drink: sel</div></li><li><div>Favourite chocolate:</div></li></ul>"
+  expected = "<ul><li><a href='#notes/0' id='0'>Favourite food: pest</a></li><li><a href='#notes/1' id='1'>Favourite drink: sel</a></li><li><a href='#notes/2' id='2'>Favourite chocolate:</a></li></ul>"
   assert.eq(expected, listView.view());
 }
 

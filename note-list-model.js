@@ -7,6 +7,7 @@
     newNote: function(text) {
       var note = new Note(text);
       this._list.push(note);
+      note.id = (this.view().length - 1);
     },
 
     view: function() {
