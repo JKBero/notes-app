@@ -1,9 +1,3 @@
-window.onload = function() {
-  const noteList = new NoteList();
-  const noteController = new NoteController(noteList);
-  noteController.render();
-};
-
 (function(exports) {
   function NoteController(noteList) {
     noteList.newNote("Favourite drink: seltzer");
@@ -13,10 +7,19 @@ window.onload = function() {
   };
 
   NoteController.prototype = {
-    render: function() {
-      const appDiv = document.getElementById("app");
-      appDiv.innerHTML = this._listView.view();
+    render: function(element = document.getElementById("app")) {
+      element.innerHTML = this._listView.view();
       const noteList = this._noteList;
+
+      // document.getElementById("text").addEventListener("submit", function(event) {
+      //   event.preventDefault();
+      //   console.log(event);
+      //   createNewNote();
+      // });
+      //
+      // function createNewNote() {
+      //   element.innerHTML = "Tiger";
+      // };
 
       window.addEventListener("hashchange", showNoteForCurrentPage);
 
@@ -31,7 +34,7 @@ window.onload = function() {
       function showNote(id) {
         const note = noteList.view()[id];
         const noteView = new SingleNoteView(note);
-        appDiv.innerHTML = noteView.render();
+        element.innerHTML = noteView.render();
       };
     }
   };

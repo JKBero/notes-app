@@ -2,23 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="note-model.js"></script>
-    <script src="note-list-model.js"></script>
-    <script src="note-list-view.js"></script>
-    <script src="single-note-view.js"></script>
-    <script src="note-controller.js"></script>
-    <script src="assert.js"></script>
-    <script src="note-controller-tests.js"></script>
-    <script src="note-list-view-tests.js"></script>
-    <script src="note-tests.js"></script>
-    <script src="note-list-tests.js"></script>
-    <script src="single-note-view-tests.js"></script>
+    <script src="js/note-model.js"></script>
+    <script src="js/note-list-model.js"></script>
+    <script src="js/note-list-view.js"></script>
+    <script src="js/single-note-view.js"></script>
+    <script src="js/note-controller.js"></script>
+    <script>
+      window.onload = function() {
+        var noteList = new NoteList();
+        var noteController = new NoteController(noteList);
+        noteController.render();
+      };
+    </script>
     <title>Note App</title>
   </head>
 
   <body>
 
-    <form id="text" method="#notes/new" action="post">
+    <form id="text" action="#notes/new" method="post">
       <textarea rows="6" columns="10" placeholder="Enter note" required></textarea><br>
       <input type="submit" value="Submit"></input>
     </form>
