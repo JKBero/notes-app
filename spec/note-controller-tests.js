@@ -1,4 +1,5 @@
 // Mock of Note
+
 function NoteDouble(text) {
   this._text = text;
 };
@@ -53,11 +54,4 @@ function testLinkList() {
 testLinkList();
 
 // Test 3
-// function testSubmitEvent() {
-//   noteController.render(element);
-//   fill out form and submit
-//   var expected = "<ul><li><a href='#notes/0' id='0'>Favourite food: pest</a></li></ul>"
-//   assert.eq(expected, actual);
-// };
-//
-// testSubmitEvent();
+// Need to test for submit button click
