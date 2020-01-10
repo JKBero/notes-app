@@ -1,40 +1,31 @@
 (function(exports) {
   function NoteController(noteList) {
-    noteList.newNote("Favourite drink: seltzer");
-    noteList.newNote("Favourite chocolate: maltesers");
     this._noteList = noteList;
     this._listView = new NoteListView(this._noteList);
   };
 
   NoteController.prototype = {
     render: function(element = document.getElementById("app")) {
-      element.innerHTML = this._listView.view();
-      const noteList = this._noteList;
+      var self = this;
+      element.innerHTML = self._listView.view();
 
-      // document.getElementById("text").addEventListener("submit", function(event) {
-      //   event.preventDefault();
-      //   console.log(event);
-      //   createNewNote();
-      // });
-      //
-      // function createNewNote() {
-      //   element.innerHTML = "Tiger";
-      // };
+      window.addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Note added!");
+        var text = event.target[0]['value'];
+        self._noteList.newNote(text);
+        self._listView = new NoteListView(self._noteList);
+        element.innerHTML = self._listView.view();
+      });
 
-      window.addEventListener("hashchange", showNoteForCurrentPage);
+      window.addEventListener("hashchange", showNote);
 
-      function showNoteForCurrentPage() {
-        showNote(getNoteFromUrl(window.location));
-      };
-
-      function getNoteFromUrl(location) {
-        return location.hash.split("#notes/")[1];
-      };
-
-      function showNote(id) {
-        const note = noteList.view()[id];
-        const noteView = new SingleNoteView(note);
+      function showNote() {
+        var id = window.location.hash.split("#notes/")[1];
+        var note = self._noteList.view()[id];
+        var noteView = new SingleNoteView(note);
         element.innerHTML = noteView.render();
+        document.getElementById("text").style.display='none';
       };
     }
   };

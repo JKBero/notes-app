@@ -1,59 +1,63 @@
+// Mock of Note
+function NoteDouble(text) {
+  this._text = text;
+};
+
+NoteDouble.prototype = {
+  read: function() {
+    return this._text;
+  }
+};
+
+// Mock of NoteList
+function NoteListDouble() {
+  this._list = []
+};
+
+NoteListDouble.prototype = {
+  newNote: function(text){
+    var note = new NoteDouble(text);
+    this._list.push(note);
+  },
+
+  view: function() {
+    return this._list;
+  }
+};
+
+const noteList = new NoteListDouble();
+
+// Mock of element
+function ElementDouble() {};
+
+ElementDouble.prototype = { innerHTML: function(){"something";} };
+
+const element = new ElementDouble();
+const noteController = new NoteController(noteList);
+
+// Test 1
 function testNoteController() {
-
-  function NoteListDouble() {};
-
-  NoteListDouble.prototype = {
-    newNote: function(){}
-  };
-
-  var noteList = new NoteListDouble();
-  var noteController = new NoteController(noteList);
-
   assert.eq(noteList, noteController._noteList);
 };
 
 testNoteController();
 
-
-function testAppDiv() {
-
-  function NoteDouble(text) {
-    this._text = text;
-  }
-
-  NoteDouble.prototype = {
-    read: function() {
-      return this._text;
-    }
-  };
-
-  function NoteListDouble() {
-    this._list = []
-  };
-
-  NoteListDouble.prototype = {
-    newNote: function(text){
-      var note = new NoteDouble(text);
-      this._list.push(note);
-    },
-
-    view: function() {
-      return this._list;
-    }
-  };
-
-  function Element() {};
-
-  Element.prototype = { innerHTML: function(){"something";} };
-
-  const noteList = new NoteListDouble();
-  const noteController = new NoteController(noteList);
-  const element = new Element();
-
+// Test 2
+function testLinkList() {
   noteController.render(element);
   const content = element.innerHTML;
-  var expected = "<ul><li><a href='#notes/undefined' id='undefined'>Favourite drink: sel</a></li><li><a href='#notes/undefined' id='undefined'>Favourite chocolate:</a></li></ul>";
+  var expected = "<ul></ul>";
   assert.eq(expected, content);
 };
 
-testAppDiv();
+testLinkList();
+
+// Test 3
+// function testSubmitEvent() {
+//   noteController.render(element);
+//   fill out form and submit
+//   var expected = "<ul><li><a href='#notes/0' id='0'>Favourite food: pest</a></li></ul>"
+//   assert.eq(expected, actual);
+// };
+//
+// testSubmitEvent();
